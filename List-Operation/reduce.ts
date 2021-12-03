@@ -1,3 +1,7 @@
+function double(num: number): number {
+	return num * 2
+}
+
 function reduce<T = any>(...args: [reducerFn: Function, initialValue: T, arr: T[]]) {
 	const [reducerFn, initialValue, arr] = args
 	let acc: any, startIndex: number
@@ -20,7 +24,6 @@ function reduce<T = any>(...args: [reducerFn: Function, initialValue: T, arr: T[
 }
 
 function pipe(...fns: Function[]) {
-	console.log('fn0', fns[0].toString())
 	return function piped(result: any) {
 		return fns.reduce(function reducer(result, fn) {
 			return fn(result)
@@ -34,7 +37,6 @@ function pipeReducer(composedFn: Function, fn: Function) {
 
 const fn = [3, 17, 6, 4].map((v: number) => (n: number) => v * n).reduce(pipeReducer)
 
-console.log(fn.toString())
 console.log(fn(9))
 console.log(fn(10))
 
@@ -49,9 +51,9 @@ const pipeReducer2 = binary(pipe)
 const fn2 = [3, 17, 6, 4].map((v: number) => (n: number) => v * n).reduce(pipeReducer2)
 
 console.log(fn2(9))
-console.log(fn2(10))
+console.log(fn2(10));
 
-[1, 2, 3, 4, 5].reduce((list, v) => (list.push(double(v)), list))
+([1, 2, 3, 4, 5] as number[]).reduce((list: number[], v: number) => (list.push(double(v)), list), [])
 
 
 
