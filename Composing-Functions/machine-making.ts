@@ -1,25 +1,28 @@
-function spreadWords(str: string) {
-	return String(str).toLowerCase().split(/\s|\b/).filter(function alpha(v) {
-		return /^[\w]+$/.test(v)
-	})
+export function spreadWords(str: string) {
+  return String(str)
+    .toLowerCase()
+    .split(/\s|\b/)
+    .filter(function alpha(v) {
+      return /^[\w]+$/.test(v)
+    })
 }
 
 function unique(list: any[]) {
-	const uniqList = []
+  const uniqList = []
 
-	for (let v of list) {
-		if (uniqList.indexOf(v) === -1) {
-			uniqList.push(v)
-		}
-	}
+  for (let v of list) {
+    if (uniqList.indexOf(v) === -1) {
+      uniqList.push(v)
+    }
+  }
 
-	return uniqList
+  return uniqList
 }
 
 function compose2(fn2: Function, fn1: Function) {
-	return function composed(origValue: any) {
-		return fn2(fn1(origValue))
-	}
+  return function composed(origValue: any) {
+    return fn2(fn1(origValue))
+  }
 }
 
 const letters = compose2(spreadWords, unique)

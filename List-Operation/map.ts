@@ -1,25 +1,27 @@
+export {}
+
 function map(mapperFn: Function, arr: any[]) {
-	const newList = []
+  const newList = []
 
-	for (let [idx, v] of arr.entries()) {
-		newList.push(mapperFn(v, idx, arr))
-	}
+  for (let [idx, v] of arr.entries()) {
+    newList.push(mapperFn(v, idx, arr))
+  }
 
-	return newList
+  return newList
 }
 
 function compose(...fns: Function[]) {
-	return fns.reverse().reduce(function reducer(fn1, fn2) {
-		return function composed(...args: any) {
-			return fn2(fn1(args))
-		}
-	})
+  return fns.reverse().reduce(function reducer(fn1, fn2) {
+    return function composed(...args: any) {
+      return fn2(fn1(args))
+    }
+  })
 }
 
 function unary(fn: Function) {
-	return function onlyOneArg(arg: any) {
-		return fn(arg)
-	}
+  return function onlyOneArg(arg: any) {
+    return fn(arg)
+  }
 }
 
 /**
@@ -49,26 +51,20 @@ console.log(res2)
  */
 
 function uppercaseLetter(c: string) {
-	let code = c.charCodeAt(0)
+  let code = c.charCodeAt(0)
 
-	// lowercase letter?
-	if (code >= 97 && code <= 122) {
-		code = code - 32
-	}
+  // lowercase letter?
+  if (code >= 97 && code <= 122) {
+    code = code - 32
+  }
 
-	return String.fromCharCode(code)
+  return String.fromCharCode(code)
 }
 
-
 function stringMap(mapperFn: (value: any, index: number, arr: any[]) => unknown, str: string) {
-	return [...str].map(mapperFn).join("")
+  return [...str].map(mapperFn).join('')
 }
 
 const res3 = stringMap(uppercaseLetter, 'Hello World!')
 
 console.log(res3)
-
-
-
-
-

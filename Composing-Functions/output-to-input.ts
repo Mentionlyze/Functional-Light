@@ -1,23 +1,27 @@
-const text = 'To compose two function together, pass the \
+const text =
+  'To compose two function together, pass the \
 output of the first function call as the input of the \
-second function call.';
+second function call.'
 
 function spreadWords(str: string) {
-	return String(str).toLowerCase().split(/\s|\b/).filter(function alpha(v) {
-		return /^[\w]+$/.test(v)
-	})
+  return String(str)
+    .toLowerCase()
+    .split(/\s|\b/)
+    .filter(function alpha(v) {
+      return /^[\w]+$/.test(v)
+    })
 }
 
 function unique(list: any[]) {
-	const uniqList = []
+  const uniqList = []
 
-	for (let v of list) {
-		if (uniqList.indexOf(v) === -1) {
-			uniqList.push(v)
-		}
-	}
+  for (let v of list) {
+    if (uniqList.indexOf(v) === -1) {
+      uniqList.push(v)
+    }
+  }
 
-	return uniqList
+  return uniqList
 }
 
 //const wordsFound = spreadWords(text)
@@ -28,5 +32,5 @@ const wordsUsed = unique(spreadWords(text))
 console.log(wordsUsed)
 
 function uniqueWords(str: string) {
-	return unique(spreadWords(str))
+  return unique(spreadWords(str))
 }

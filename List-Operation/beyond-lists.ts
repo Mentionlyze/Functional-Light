@@ -48,5 +48,9 @@ const BANANA = BinaryTree.map((node: ReturnType<typeof BinaryTree>) => BinaryTre
 
 BinaryTree.forEach((node: any) => console.log(node.value), BANANA)
 
-
+BinaryTree.reduce = function reduce(reducerFn: Function, initialValue: any, node: ReturnType<typeof BinaryTree>) {
+	if (arguments.length < 3) {
+		node = initialValue
+	}
+}
 

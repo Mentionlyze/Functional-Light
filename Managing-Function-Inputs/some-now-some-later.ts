@@ -1,5 +1,6 @@
 export function ajax(url: string, data: Object, callback: Function) {
   // TODO
+  console.log(url)
 }
 
 /*
