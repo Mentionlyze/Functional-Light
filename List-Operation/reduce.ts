@@ -1,5 +1,3 @@
-export {}
-
 function double(num: number): number {
   return num * 2
 }
@@ -39,6 +37,8 @@ function pipeReducer(composedFn: Function, fn: Function) {
 
 const fn = [3, 17, 6, 4].map((v: number) => (n: number) => v * n).reduce(pipeReducer)
 
+console.log(fn)
+
 console.log(fn(9))
 console.log(fn(10))
 
@@ -50,7 +50,11 @@ function binary(fn: Function) {
 
 const pipeReducer2 = binary(pipe)
 
+console.log(pipeReducer2)
+
 const fn2 = [3, 17, 6, 4].map((v: number) => (n: number) => v * n).reduce(pipeReducer2)
+
+console.log(fn2)
 
 console.log(fn2(9))
 console.log(fn2(10))

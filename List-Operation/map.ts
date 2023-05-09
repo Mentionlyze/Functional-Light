@@ -1,6 +1,4 @@
-export {}
-
-function map(mapperFn: Function, arr: any[]) {
+export function map(mapperFn: Function, arr: any[]) {
   const newList = []
 
   for (let [idx, v] of arr.entries()) {
